@@ -43,10 +43,12 @@ namespace NinjaTrader.NinjaScript.Indicators
 
         [NinjaScriptProperty]
         [Display(Name = "Custom Positive Color", GroupName = GROUP_NAME_VOLMA_DELTA, Order = 3)]
+        [XmlIgnore]
         public Brush CustomPositiveColor { get; set; }
 
         [NinjaScriptProperty]
         [Display(Name = "Custom Negative Color", GroupName = GROUP_NAME_VOLMA_DELTA, Order = 4)]
+        [XmlIgnore]
         public Brush CustomNegativeColor { get; set; }
 
         #endregion
@@ -117,55 +119,55 @@ namespace NinjaTrader.NinjaScript.Indicators
 
 namespace NinjaTrader.NinjaScript.Indicators
 {
-	public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
-	{
-		private VolmaDelta[] cacheVolmaDelta;
-		public VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
+    {
+        private VolmaDelta[] cacheVolmaDelta;
+        public VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public VolmaDelta VolmaDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			if (cacheVolmaDelta != null)
-				for (int idx = 0; idx < cacheVolmaDelta.Length; idx++)
-					if (cacheVolmaDelta[idx] != null && cacheVolmaDelta[idx].FastPeriod == fastPeriod && cacheVolmaDelta[idx].Period == period && cacheVolmaDelta[idx].OverridePlotColors == overridePlotColors && cacheVolmaDelta[idx].CustomPositiveColor == customPositiveColor && cacheVolmaDelta[idx].CustomNegativeColor == customNegativeColor && cacheVolmaDelta[idx].EqualsInput(input))
-						return cacheVolmaDelta[idx];
-			return CacheIndicator<VolmaDelta>(new VolmaDelta(){ FastPeriod = fastPeriod, Period = period, OverridePlotColors = overridePlotColors, CustomPositiveColor = customPositiveColor, CustomNegativeColor = customNegativeColor }, input, ref cacheVolmaDelta);
-		}
-	}
+        public VolmaDelta VolmaDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            if (cacheVolmaDelta != null)
+                for (int idx = 0; idx < cacheVolmaDelta.Length; idx++)
+                    if (cacheVolmaDelta[idx] != null && cacheVolmaDelta[idx].FastPeriod == fastPeriod && cacheVolmaDelta[idx].Period == period && cacheVolmaDelta[idx].OverridePlotColors == overridePlotColors && cacheVolmaDelta[idx].CustomPositiveColor == customPositiveColor && cacheVolmaDelta[idx].CustomNegativeColor == customNegativeColor && cacheVolmaDelta[idx].EqualsInput(input))
+                        return cacheVolmaDelta[idx];
+            return CacheIndicator<VolmaDelta>(new VolmaDelta() { FastPeriod = fastPeriod, Period = period, OverridePlotColors = overridePlotColors, CustomPositiveColor = customPositiveColor, CustomNegativeColor = customNegativeColor }, input, ref cacheVolmaDelta);
+        }
+    }
 }
 
 namespace NinjaTrader.NinjaScript.MarketAnalyzerColumns
 {
-	public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
-	{
-		public Indicators.VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
+    {
+        public Indicators.VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public Indicators.VolmaDelta VolmaDelta(ISeries<double> input , int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.VolmaDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
-	}
+        public Indicators.VolmaDelta VolmaDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.VolmaDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
+    }
 }
 
 namespace NinjaTrader.NinjaScript.Strategies
 {
-	public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
-	{
-		public Indicators.VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
+    public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
+    {
+        public Indicators.VolmaDelta VolmaDelta(int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.VolmaDelta(Input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
 
-		public Indicators.VolmaDelta VolmaDelta(ISeries<double> input , int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
-		{
-			return indicator.VolmaDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
-		}
-	}
+        public Indicators.VolmaDelta VolmaDelta(ISeries<double> input, int fastPeriod, int period, bool overridePlotColors, Brush customPositiveColor, Brush customNegativeColor)
+        {
+            return indicator.VolmaDelta(input, fastPeriod, period, overridePlotColors, customPositiveColor, customNegativeColor);
+        }
+    }
 }
 
 #endregion
