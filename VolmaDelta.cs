@@ -23,7 +23,7 @@ namespace NinjaTrader.NinjaScript.Indicators
         [NinjaScriptProperty]
         [Display(Name = "Version", Description = "Volma Delta version.", Order = 0, GroupName = GROUP_NAME_GENERAL)]
         [ReadOnly(true)]
-        public string Version => "1.0.0";
+        public string Version => "1.0.1";
 
         #endregion
 
